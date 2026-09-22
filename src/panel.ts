@@ -43,16 +43,16 @@ export async function GetPanel(request: Request, env: Env): Promise<Response> {
     let htmlMessage = ""
     const message = url.searchParams.get("message")
     if (message == "success") {
-      htmlMessage = `<div class="p-1 bg-success text-white fw-bold text-center">Settings saved successfully.<br/>تنظیمات با موفقیت ذخیره شد.</div>`
+      htmlMessage = `<div class="p-1 bg-success text-white fw-bold text-center">Settings saved successfully.</div>`
     } else if (message == "error") {
-      htmlMessage = `<div class="p-1 bg-danger text-white fw-bold text-center">Failed to save settings!<br/>خطا در ذخیره‌ی تنظیمات!</div>`
+      htmlMessage = `<div class="p-1 bg-danger text-white fw-bold text-center">Failed to save settings!</div>`
     }
 
     let passwordSection = ""
     if (hash) {
       passwordSection = `
       <div class="mb-3 p-1">
-        <button type="submit" name="reset_password" value="1" class="btn btn-danger">Remove Password / حذف کلمه عبور</button>
+        <button type="submit" name="reset_password" value="1" class="btn btn-danger">Remove Password </button>
       </div>
       `
     } else {
@@ -62,15 +62,15 @@ export async function GetPanel(request: Request, env: Env): Promise<Response> {
       </div>
       <div class="mb-3 p-3 border rounded">
         <label for="password" class="form-label fw-bold">
-          Enter password, if you want to protect panel / در صورتی که میخواهید از پنل محافظت کنید، یک کلمه‌ی عبور وارد کنید:
+          Enter password, if you want to protect panel :
         </label>
         <input type="password" name="password" class="form-control" id="password" minlength="6"/>
         <div class="form-text">
-          Minimum 6 chars / حداقل ۶ کاراکتر وارد کنید.
+          Minimum 6 chars.
         </div>
         <p></p>
         <label for="password-confirmation" class="form-label fw-bold">
-          Confirm your password / کلمه عبور را مجددا وارد کنید:
+          Confirm your password:
         </label>
         <input type="password" name="password_confirmation" class="form-control" id="password-confirmation" minlength="6"/>
       </div>
@@ -205,7 +205,6 @@ export async function GetPanel(request: Request, env: Env): Promise<Response> {
     
         const languages = {
           en: {dir: "ltr", end: "right"},
-          fa: {dir: "rtl", end: "left"},
         }
       
         const strings = {
@@ -241,39 +240,6 @@ export async function GetPanel(request: Request, env: Env): Promise<Response> {
             "enable-fragments-remarks": "If you check this option, fragments will be enabled for all TLS configs using random values.",
             "save-button": "Save",
             "reset-button": "Reset",
-          },
-          fa: {
-            "page-title": "پنل کنترل ورکر v2ray",
-            "text-version": "نسخه",
-            "sub-link-title": "لینک ثبت نام شما برای کلاینت‌های v2rayN, v2rayNG, v2rayA, Nekobox, Nekoray, V2Box و...",
-            // "custom-link-title": "لینک ثبت نام شما برای کانفیگ‌های Custom",
-            "clash-link-title": "لینک ثبت نام شما برای کلاینت‌های کلش Clash, ClashX, ClashMeta و...",
-            "includes-title": "کانفیگ‌های اصلی و ترکیبی",
-            "include-merged-configs-title": "کانفیگ‌های ترکیب شده با ورکر را اضافه کن",
-            "include-original-configs-title": "کانفیگ‌های اصلی را اضافه کن",
-            "max-configs-title": "حداکثر تعداد کانفیگ",
-            "protocols-title": "پروتکل‌ها",
-            "clean-ips-title": "آی‌پی تمیز یا ساب‌دامین آی‌پی تمیز",
-            "clean-ips-remarks": "در هر سطر یک آی‌پی یا ساب‌دامین وارد کنید.",
-            "clean-ips-btn-title": "پیدا کردن آی‌پی تمیز",
-            "clean-ips-btn-close-title": "بستن",
-            "alpn-list-title": "لیست ALPN ها",
-            "alpn-list-remarks": "در هر سطر یک آیتم وارد کنید.",
-            "fp-list-title": "لیست فینگرپرینت‌ها",
-            "fp-list-remarks": "در هر سطر یک آیتم وارد کنید.",
-            "providers-title": "تامین کنندگان کانفیگ",
-            "providers-auto-title": "دریافت خودکار از گیت‌هاب",
-            "providers-remarks": "در هر سطر یک لینک وارد کنید (base64, yaml, raw).",
-            "countries-title": "محدود کردن کشور (فقط برای وبسایت‌های پشت شبکه کلادفلر)",
-            "countries-all-title": "در صورت فعال‌سازی این گزینه، تمام پروتکل‌ها بجز پروتکل‌های داخلی ورکر غیرفعال می‌شوند.",
-            "personal-configs-title": "کانفیگ‌های خصوصی",
-            "personal-configs-remarks": "در هر سطر یک کانفیگ وارد کنید.",
-            "block-porn-title": "مسدودسازی پورن",
-            "block-porn-remarks": "در صورت فعال‌سازی این گزینه، همزمان با مسدودسازی پورن تمام پروتکل‌ها بجز vless های داخلی ورکر نیز غیرفعال می‌شوند.",
-            "enable-fragments-title": "فعال‌سازی فرگمنت",
-            "enable-fragments-remarks": "در صورت فعال‌سازی این گزینه، فرگمنت برای تمام کانفیگ‌های TLS با مقادیر اتفاقی فعال می‌شود.",
-            "save-button": "ذخیره",
-            "reset-button": "بازنشانی",
           },
         }
       </script>
@@ -495,7 +461,7 @@ export async function GetPanel(request: Request, env: Env): Promise<Response> {
           </div>
         </body>
         <script>
-        let language = localStorage.getItem("lang") || "fa"
+        let language = localStorage.getItem("lang") || "en"
         window.addEventListener("load", (event) => {
           initLang();
           setLang(language);
@@ -543,7 +509,6 @@ export async function GetPanel(request: Request, env: Env): Promise<Response> {
     
         const languages = {
           en: {dir: "ltr", end: "right"},
-          fa: {dir: "rtl", end: "left"},
         }
       
         const strings = {
@@ -557,17 +522,6 @@ export async function GetPanel(request: Request, env: Env): Promise<Response> {
             "you-need-namespace-message": "The 'settings' namespace is not defined! Please define a namespace named 'settings' in your worker 'KV Namespace Bindings' using bellow link, as described in the video and relad the page afterward.",  
             "open-kv-text": "Open KV",
             "open-variables-text": "Open Worker's Variables",
-          },
-          fa: {
-            "page-title": "پنل کنترل ورکر v2ray",
-            "text-version": "نسخه",
-            "sub-link-title": "لینک ثبت نام شما برای کلاینت‌های v2rayN, v2rayNG, v2rayA, Nekobox, Nekoray, V2Box و...",
-            // "custom-link-title": "لینک ثبت نام شما برای کانفیگ‌های Custom",
-            "clash-link-title": "لینک ثبت نام شما برای کلاینت‌های کلش Clash, ClashX, ClashMeta و...",
-            "you-can-use-your-worker-message": "شما می‌توانید از ورکر خود بدون پنل کنترل استفاده نمایید.",
-            "you-need-namespace-message": "فضای نام settings تعریف نشده است. لطفا مطابق ویدیوی آموزشی، از طریق لینک‌های زیر ابتدا در بخش KV یک فضای نام به اسم settings ایجاد کنید و سپس ازطریق بخش 'KV Namespace Bindings' آن را با همان نام settings به ورکر خود متصل کنید و پس از ذخیره، مجددا پنل را باز کنید.",
-            "open-kv-text": "بازکردن بخش KV",
-            "open-variables-text": "بازکردن بخش متغیرهای ورکر",
           },
         }
         </script>
